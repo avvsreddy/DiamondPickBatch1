@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQDemos", "LINQDemos\LINQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsDemo", "DesignPatternsDemo\DesignPatternsDemo.csproj", "{1281F73F-0C17-4855-B3A9-2C0BE3BB5C94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDELanguageDemo", "IDELanguageDemo\IDELanguageDemo.csproj", "{A663DC34-6937-4787-9206-68C36B024C43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1281F73F-0C17-4855-B3A9-2C0BE3BB5C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1281F73F-0C17-4855-B3A9-2C0BE3BB5C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1281F73F-0C17-4855-B3A9-2C0BE3BB5C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A663DC34-6937-4787-9206-68C36B024C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A663DC34-6937-4787-9206-68C36B024C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A663DC34-6937-4787-9206-68C36B024C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A663DC34-6937-4787-9206-68C36B024C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
