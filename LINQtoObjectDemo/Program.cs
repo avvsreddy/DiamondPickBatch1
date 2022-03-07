@@ -27,15 +27,39 @@ namespace LINQtoObjectDemo
                         select e4;
 
             // Case 5: Get all Employees total salary
+            var case5 = (from e5 in Employee.Employees()
+                        select e5.Salary).Sum();
+            var case5A = Employee.Employees().Sum(e=>e.Salary);
 
             // Case 6: Get count of employees working in HR dept
+            var case6 = (from e6 in Employee.Employees()
+                         where e6.Dept == "HR"
+                         select e6).Count();
 
             // Case 7: Get the name of the employee who's getting highest salary
+            var case7A = (from e7 in Employee.Employees()
+                          select e7.Salary).Max();
+            var case7B = from e77 in Employee.Employees()
+                         where e77.Salary == case7A
+                         select e77.Name;
+
+            var case7C = from e77 in Employee.Employees()
+                         where e77.Salary == (from e7 in Employee.Employees()
+                                              select e7.Salary).Max()
+                         select e77.Name;
+
+            var case7D = (from e7e in Employee.Employees()
+                          orderby e7e.Salary descending
+                          select e7e.Name).FirstOrDefault(); ;
 
             // Case 8: Get the average salary of employees in bangalore
+            var case8 = Employee.Employees()
+                .Where(e => e.Loc == "Bangalore")
+                .Select(e =>e.Salary).Average();
 
             // Case 9: Get the dept mininum avg salary
 
+           
 
 
             foreach (var item in case1)
