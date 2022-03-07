@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LINQ Demos", "LINQ Demos", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ.Demo2", "LINQ.Demo2\LINQ.Demo2.csproj", "{FB99A7A6-D9DB-40F3-A07B-6BF6A2E913CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQtoObjectDemo", "LINQtoObjectDemo\LINQtoObjectDemo.csproj", "{1D8AB8E6-9CC4-4874-A518-79CB266C33AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{FB99A7A6-D9DB-40F3-A07B-6BF6A2E913CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB99A7A6-D9DB-40F3-A07B-6BF6A2E913CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB99A7A6-D9DB-40F3-A07B-6BF6A2E913CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8AB8E6-9CC4-4874-A518-79CB266C33AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8AB8E6-9CC4-4874-A518-79CB266C33AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8AB8E6-9CC4-4874-A518-79CB266C33AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8AB8E6-9CC4-4874-A518-79CB266C33AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{75AFC0A6-4C28-42BC-845C-AD79ED1BD951} = {5D5C9020-6D34-4F8F-96D9-AEFDD4258FCC}
 		{FB99A7A6-D9DB-40F3-A07B-6BF6A2E913CA} = {5D5C9020-6D34-4F8F-96D9-AEFDD4258FCC}
+		{1D8AB8E6-9CC4-4874-A518-79CB266C33AF} = {5D5C9020-6D34-4F8F-96D9-AEFDD4258FCC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C0A1D91-8B3C-463A-82AE-0A7CF19861ED}
