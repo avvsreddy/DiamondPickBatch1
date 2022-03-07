@@ -28,15 +28,33 @@ namespace LINQDemos
                                where number % 2 == 0 
                                select number;
 
-
-            // LINQ Extensions
-
+            // LINQ Extensions using delegates
             Func<int, bool> predicate = new Func<int, bool>(IsEven);
-
             var evenNumbers3 = numbers.Where(predicate);
 
+            // LINQ Extensions using Delegate
 
-            foreach (var item in evenNumbers3)
+            var evenNumbers4 = numbers.Where(IsEven);
+            
+            // LINQ Extensions using Anonymous delegates
+
+            var evenNumbver5 = numbers.Where(delegate (int n)
+            {
+                return n % 2 == 0;
+            });
+
+            // LINQ Extensions using Lambda Statements
+            var evenNumbver6 = numbers.Where((int n) =>
+            {
+                return n % 2 == 0;
+            });
+
+            // LINQ Extensions using Lambda Expression
+            var evenNumbers7 = numbers.Where( n => n % 2 == 0);
+
+
+
+            foreach (var item in evenNumbers7)
             {
                 Console.WriteLine(item);
             }
