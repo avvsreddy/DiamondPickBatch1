@@ -12,8 +12,15 @@ namespace ProductsManagement.ConsoleApp.DataAccess
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=DiamondPickDB;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=DiamondPickDB;Integrated Security=True;MultipleActiveResultSets=True")
+                .UseLazyLoadingProxies();
+
+
+          
+            optionsBuilder.LogTo(msg => Console.WriteLine(msg));
+
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Catagory> Catagories { get; set; }
     }
 }
