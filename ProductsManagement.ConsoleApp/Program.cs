@@ -11,13 +11,28 @@ namespace ProductsManagement.ConsoleApp
         static void Main(string[] args)
         {
             ProductsDbContext db = new ProductsDbContext();
-            // store suppler and customer data
-            var s = new Supplier {Contact = "2342342323", Location="Bangalore", Name="Supplier 1", Rating = 8, SupplierType = "Diamond" };
+            //Get all Customers only
+            var customers = from c in db.Customers
+                            select c;
 
-            var c = new Customer {Contact = "567567567", CustomerType = "Silver", Discount=10, Location="Delhi", MembershipFee=1500, Name="Customer 1" };
+            foreach (var item in customers)
+            {
+                Console.WriteLine(item.Name);
 
-            db.People.Add(s);
-            db.People.Add(c);
+            }
+            //AddCustomerSuppler(db);
+
+
+        }
+
+        private static void AddCustomerSuppler(ProductsDbContext db)
+        {
+            var s = new Supplier { Contact = "2342342323", Location = "Bangalore", Name = "Supplier 1", Rating = 8, SupplierType = "Diamond" };
+
+            var c = new Customer { Contact = "567567567", CustomerType = "Silver", Discount = 10, Location = "Delhi", MembershipFee = 1500, Name = "Customer 1" };
+
+            db.Suppliers.Add(s);
+            db.Customers.Add(c);
             db.SaveChanges();
             Console.WriteLine("data added");
         }

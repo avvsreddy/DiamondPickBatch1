@@ -10,8 +10,8 @@ using ProductsManagement.ConsoleApp.DataAccess;
 namespace ProductsManagement.ConsoleApp.Migrations
 {
     [DbContext(typeof(ProductsDbContext))]
-    [Migration("20220310060732_TPH")]
-    partial class TPH
+    [Migration("20220310065910_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace ProductsManagement.ConsoleApp.Migrations
                     b.ToTable("Catagories");
                 });
 
-            modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Person", b =>
+            modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Customer", b =>
                 {
                     b.Property<int>("PersonID")
                         .ValueGeneratedOnAdd()
@@ -59,23 +59,29 @@ namespace ProductsManagement.ConsoleApp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("CustomerType")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MembershipFee")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonID");
 
-                    b.ToTable("People");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Product", b =>
@@ -107,25 +113,24 @@ namespace ProductsManagement.ConsoleApp.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Customer", b =>
-                {
-                    b.HasBaseType("ProductsManagement.ConsoleApp.Entities.Person");
-
-                    b.Property<string>("CustomerType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Discount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MembershipFee")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Customer");
-                });
-
             modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Supplier", b =>
                 {
-                    b.HasBaseType("ProductsManagement.ConsoleApp.Entities.Person");
+                    b.Property<int>("PersonID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -133,7 +138,9 @@ namespace ProductsManagement.ConsoleApp.Migrations
                     b.Property<string>("SupplierType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Supplier");
+                    b.HasKey("PersonID");
+
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("ProductSupplier", b =>
