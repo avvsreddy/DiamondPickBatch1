@@ -22,5 +22,9 @@ namespace ProductsManagement.ConsoleApp.Entities
         public string Brand { get; set; }
 
         public virtual Catagory Catagory { get; set; }
+
+        public virtual List<Supplier> Suppliers { get; set; } = new List<Supplier>();
     }
+
+    
 }

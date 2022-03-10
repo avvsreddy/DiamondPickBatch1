@@ -10,28 +10,42 @@ namespace ProductsManagement.ConsoleApp
     {
         static void Main(string[] args)
         {
+            ProductsDbContext db = new ProductsDbContext();
+            // store suppler and customer data
+            var s = new Supplier {Contact = "2342342323", Location="Bangalore", Name="Supplier 1", Rating = 8, SupplierType = "Diamond" };
+
+            var c = new Customer {Contact = "567567567", CustomerType = "Silver", Discount=10, Location="Delhi", MembershipFee=1500, Name="Customer 1" };
+
+            db.People.Add(s);
+            db.People.Add(c);
+            db.SaveChanges();
+            Console.WriteLine("data added");
+        }
+
+        private static void LoadingHasAData()
+        {
             // get all products name along with catagory name
             ProductsDbContext db = new ProductsDbContext();
 
             // EF Loading Strategies
             // Egar Loading - just use Include()
             // Lazy Loading
-                // 1. install proxies nuget package
-                // 2. mark navigation propties with virtual 
-                // 3. configure for uselazyloadingproxies
-                // 4. enable MARS support
+            // 1. install proxies nuget package
+            // 2. mark navigation propties with virtual 
+            // 3. configure for uselazyloadingproxies
+            // 4. enable MARS support
 
 
 
-            var productNameCatagoryName = from p in db.Products.Include(p => p.Catagory)
+            var productNameCatagoryName = from p in db.Products//.Include(p => p.Catagory)
                                           select p;
+
+
 
             foreach (var item in productNameCatagoryName)
             {
                 Console.WriteLine(item.ProductName + "\t" + item.Catagory.CatagoryName);
             }
-
-
         }
 
         private static void AddNewCatagoryWithExistingProducts()
@@ -45,8 +59,11 @@ namespace ProductsManagement.ConsoleApp
             Product dell = db.Products.Find(2);
             Product hp = db.Products.Find(1);
             // associate old product with new catagory
-            dell.Catagory = laptop;
-            hp.Catagory = laptop;
+            //dell.Catagory = laptop;
+            //hp.Catagory = laptop;
+
+            laptop.Products.Add(dell);
+            laptop.Products.Add(hp);
             // add new catagory into dbset
             db.Catagories.Add(laptop);
             // save changes

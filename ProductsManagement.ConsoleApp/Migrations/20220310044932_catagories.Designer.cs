@@ -10,8 +10,8 @@ using ProductsManagement.ConsoleApp.DataAccess;
 namespace ProductsManagement.ConsoleApp.Migrations
 {
     [DbContext(typeof(ProductsDbContext))]
-    [Migration("20220308100816_CatagoryAdded")]
-    partial class CatagoryAdded
+    [Migration("20220310044932_catagories")]
+    partial class catagories
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,10 +68,15 @@ namespace ProductsManagement.ConsoleApp.Migrations
             modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Product", b =>
                 {
                     b.HasOne("ProductsManagement.ConsoleApp.Entities.Catagory", "Catagory")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CatagoryId");
 
                     b.Navigation("Catagory");
+                });
+
+            modelBuilder.Entity("ProductsManagement.ConsoleApp.Entities.Catagory", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProductsManagement.ConsoleApp.Entities
 {
-    public class Catagory
+    public class Supplier : Person
     {
-        public int CatagoryId { get; set; }
-        public string CatagoryName { get; set; }
+        public int Rating { get; set; }
+        public string SupplierType { get; set; }
+
         public virtual List<Product> Products { get; set; } = new List<Product>();
     }
 }
