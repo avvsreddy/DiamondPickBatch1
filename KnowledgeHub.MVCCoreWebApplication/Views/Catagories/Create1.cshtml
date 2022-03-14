@@ -1,0 +1,40 @@
+﻿@model KnowledgeHub.Entities.Catagory
+
+@{
+    ViewData["Title"] = "Create1";
+}
+
+<h1>Create1</h1>
+
+<h4>Catagory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CatagoryID" class="control-label"></label>
+                <input asp-for="CatagoryID" class="form-control" />
+                <span asp-validation-for="CatagoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CatagoryName" class="control-label"></label>
+                <input asp-for="CatagoryName" class="form-control" />
+                <span asp-validation-for="CatagoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CatagoryDescription" class="control-label"></label>
+                <input asp-for="CatagoryDescription" class="form-control" />
+                <span asp-validation-for="CatagoryDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

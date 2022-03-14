@@ -10,11 +10,12 @@ namespace KnowledgeHub.Entities
     public class Catagory
     {
         public int CatagoryID { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Kindly provide catagory title")]
         [MaxLength(50)]
-        
+        [Display(Name="Title")]
         public string CatagoryName { get; set; }
         [MaxLength(500)]
+        [Display(Name ="Description")]
         public string CatagoryDescription { get; set; }
     }
 }
