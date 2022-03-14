@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "ContactUs";
+}
+
+<h1>Contact Us :  @ViewBag.ToDay </h1>
+<hr />
+Contact the developers of KH portal by sending an email to contact@khportal.com
+
+<ol>
+  @for(var i = 1;i<=10;i++)
+    {
+        <li> @ViewBag.ToDay</li>
+    }
+</ol>
+
+<table class="table d-sm-table">
+    
+        @for (var i = 1; i <=10; i++)
+       {
+           <tr>
+            <td>@ViewData["toDay"]</td>  
+            </tr>
+       }
+        
+  
+</table>

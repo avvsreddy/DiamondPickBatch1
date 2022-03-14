@@ -15,6 +15,8 @@ namespace BooksCatalogManagement
         public double Price { get; set; }
         public string PublishDate { get; set; }
         public string Description { get; set; }
+
+       
     }
 }
 
