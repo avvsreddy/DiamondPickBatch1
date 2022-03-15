@@ -13,6 +13,7 @@
         <tr>
             <th>Catagory Name</th>
             <th>Catagory Description</th>
+            <th>Action</th>
         </tr>
     </thead>
     @foreach (var c in Model)
@@ -20,6 +21,12 @@
        <tr>
            <td>@c.CatagoryName</td>
            <td>@c.CatagoryDescription</td>
+           <td>
+
+               <a asp-action=Delete asp-controller=Catagories asp-route-id=@c.CatagoryID class="btn btn-danger">Delete</a> 
+               <a>Edit</a>
+
+           </td>
        </tr>
    }
 

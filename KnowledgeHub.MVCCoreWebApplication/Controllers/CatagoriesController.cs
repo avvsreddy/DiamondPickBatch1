@@ -51,5 +51,28 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
             // return a index view 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            // fetch the catagory by id
+            Catagory catagoryToDelete = db.Catagories.Find(id);
+            if (catagoryToDelete == null)
+                return NotFound();
+            return View(catagoryToDelete);
+            // pass the catagory obj to a view for confirmation
+            // on confirmation delete the catagory and return to index
+
+            
+        }
+
+        public IActionResult ConfirmDelete(int id)
+        {
+            // fetch the catagory by id
+            Catagory catagoryToDelete = db.Catagories.Find(id);
+            db.Catagories.Remove(catagoryToDelete);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

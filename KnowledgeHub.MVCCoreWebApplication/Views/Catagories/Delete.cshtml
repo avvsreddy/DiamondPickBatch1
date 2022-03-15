@@ -1,0 +1,10 @@
+﻿@model KnowledgeHub.Entities.Catagory
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Confirm Delete</h1>
+<hr />
+<h3>Would you like to delete @Model.CatagoryName ?</h3>
+<a asp-action="ConfirmDelete" asp-route-id=@Model.CatagoryID class="btn btn-danger">Confirm</a>
+<a asp-action=Index class="btn btn-info">Cancel</a>
