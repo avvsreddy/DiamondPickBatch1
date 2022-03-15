@@ -1,0 +1,28 @@
+﻿@model List<KnowledgeHub.Entities.Catagory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Catagories</h1>
+<hr />
+
+<h3>Catagories Count : @Model.Count</h3>  
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Catagory Name</th>
+            <th>Catagory Description</th>
+        </tr>
+    </thead>
+    @foreach (var c in Model)
+   {
+       <tr>
+           <td>@c.CatagoryName</td>
+           <td>@c.CatagoryDescription</td>
+       </tr>
+   }
+
+
+</table>
+

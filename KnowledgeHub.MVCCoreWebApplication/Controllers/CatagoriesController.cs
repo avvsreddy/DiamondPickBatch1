@@ -1,16 +1,29 @@
-﻿using KnowledgeHub.Entities;
+﻿using KnowledgeHub.DataAccess;
+using KnowledgeHub.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 {
+
+    // CatagoriesController ctr = new CatagoriesController(new KnowldgeHubDbContext())
+
     public class CatagoriesController : Controller
     {
+        private readonly KnowldgeHubDbContext db;
+
+        public CatagoriesController(KnowledgeHub.DataAccess.KnowldgeHubDbContext db)
+        {
+            this.db = db;
+        }
         public IActionResult Index()
         {
             // fetch all catagories and display
-
-            return View();
+            List<Catagory> catagories = db.Catagories.ToList();
+            //ViewBag.Catagories = catagories;
+            return View(catagories);
         }
 
         // /catagories/create
@@ -32,8 +45,11 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 
             }
             // persist the data
+            // KnowledgeHub.DataAccess.KnowldgeHubDbContext db = new DataAccess.KnowldgeHubDbContext();
+            db.Catagories.Add(catagory);
+            db.SaveChanges();
             // return a index view 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

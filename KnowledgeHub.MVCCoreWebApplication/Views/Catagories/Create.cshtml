@@ -17,10 +17,13 @@
 </form>
 *@
 
+
+
+
+
+
+
 <form asp-action=Save asp-controller=Catagories method="post">
-
-  
-
  <label asp-for=CatagoryName></label><br>
  
   <input asp-for=CatagoryName /> 
@@ -30,7 +33,20 @@
 <label asp-for=CatagoryDescription></label><br>
   <textarea asp-for=CatagoryDescription></textarea><br />
   <input type="submit" value="Create Catagory" />   
-  @*do client side validation*@
+  @*do client side validation - jquery validation *@
 </form>
 
+@*<script src=~/lib/jquery/dist/jquery.min.js></script>
+<script src=~/lib/jquery-validation/dist/jquery.validate.min.js></script>
+<script src=~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js></script>
 
+*@
+
+@section Scripts{
+<partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}
+@*@Html.Partial("~Views/Shared/_ValidationScriptsPartial.cshtml")
+
+@{
+    Html.RenderPartial("_ValidationScriptsPartial");
+}*@
