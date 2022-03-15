@@ -32,6 +32,7 @@ namespace KnowledgeHub.DataAccess
 
 
         public DbSet<Catagory> Catagories { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
     }
 }

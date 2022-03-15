@@ -1,0 +1,19 @@
+﻿@model KnowledgeHub.Entities.Catagory
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Catagory</h1>
+<hr />
+
+<form asp-action="Edit" asp-controller="Catagories" method="post">
+    <input type="hidden" asp-for=CatagoryID value=@Model.CatagoryID />
+    <label asp-for=CatagoryName></label><br />
+    <input asp-for=CatagoryName value=@Model.CatagoryName /><br />
+    <label asp-for=CatagoryDescription></label><br />
+    <textarea asp-for=CatagoryDescription>@Model.CatagoryDescription</textarea><br />
+    <input type="submit" value="Edit" />
+    <a asp-action=Index class="btn btn-info">Cancel</a>
+
+</form>   
+

@@ -73,6 +73,24 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            // fetch the catagory by id
+            Catagory catagoryToEdit = db.Catagories.Find(id);
+            if (catagoryToEdit == null)
+                return NotFound();
+            return View(catagoryToEdit);
+        }
+        [HttpPost]
+        public IActionResult Edit(Catagory catagory)
+        {
+            if (!ModelState.IsValid)
+                return View(catagory);
+            db.Entry(catagory).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }
