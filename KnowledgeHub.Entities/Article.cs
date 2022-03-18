@@ -16,16 +16,19 @@ namespace KnowledgeHub.Entities
         public string Title { get; set; }
         [Required]
         [MaxLength(500)]
-        [Display(Name ="Article URL")]
+        [Display(Name = "Article URL")]
         public string ArticleUrl { get; set; }
         [MaxLength(1000)]
         public string Description { get; set; }
         public Catagory Catagory { get; set; }
 
         //[ForeignKey("Catagory")]
+        [Display(Name ="Catagory")]
         public int CatagoryID { get; set; }
 
+        [Display(Name ="Owner")]
         public string SubmittedBy { get; set; }
+        [Display(Name ="Date Submitted")]
         public DateTime DateSubmitted { get; set; } = DateTime.Now.Date;
         public bool IsApproved { get; set; } = false;
 
