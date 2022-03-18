@@ -4,14 +4,16 @@ using KnowledgeHub.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KnowledgeHub.DataAccess.Migrations
 {
     [DbContext(typeof(KnowldgeHubDbContext))]
-    partial class KnowldgeHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220317062612_seed")]
+    partial class seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

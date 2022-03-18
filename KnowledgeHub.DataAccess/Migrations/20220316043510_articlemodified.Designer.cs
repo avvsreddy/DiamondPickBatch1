@@ -4,14 +4,16 @@ using KnowledgeHub.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KnowledgeHub.DataAccess.Migrations
 {
     [DbContext(typeof(KnowldgeHubDbContext))]
-    partial class KnowldgeHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220316043510_articlemodified")]
+    partial class articlemodified
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,32 +80,6 @@ namespace KnowledgeHub.DataAccess.Migrations
                     b.HasKey("CatagoryID");
 
                     b.ToTable("Catagories");
-
-                    b.HasData(
-                        new
-                        {
-                            CatagoryID = 1,
-                            CatagoryDescription = "Microsoft ASP.Net MVC Core",
-                            CatagoryName = "ASP.Net MVC Core"
-                        },
-                        new
-                        {
-                            CatagoryID = 2,
-                            CatagoryDescription = "Microsoft ASP.Net MVC",
-                            CatagoryName = "ASP.Net MVC"
-                        },
-                        new
-                        {
-                            CatagoryID = 3,
-                            CatagoryDescription = "Microsoft .NEt Framework",
-                            CatagoryName = ".Net Framework"
-                        },
-                        new
-                        {
-                            CatagoryID = 4,
-                            CatagoryDescription = "Microsoft .Net  Core",
-                            CatagoryName = ".Net Core"
-                        });
                 });
 
             modelBuilder.Entity("KnowledgeHub.Entities.Article", b =>

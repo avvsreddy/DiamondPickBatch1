@@ -31,11 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementApp", "Em
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC Core Knowledge Hub Case Study", "MVC Core Knowledge Hub Case Study", "{E55444D2-1D72-4BA4-ABE5-B4E00F92A2F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeHub.MVCCoreWebApplication", "KnowledgeHub.MVCCoreWebApplication\KnowledgeHub.MVCCoreWebApplication.csproj", "{9BDC3449-558D-400D-BD98-EE33F6C17819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeHub.MVCCoreWebApplication", "KnowledgeHub.MVCCoreWebApplication\KnowledgeHub.MVCCoreWebApplication.csproj", "{9BDC3449-558D-400D-BD98-EE33F6C17819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeHub.Entities", "KnowledgeHub.Entities\KnowledgeHub.Entities.csproj", "{F8134F10-7117-439B-97DA-B370FD2BB14E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeHub.Entities", "KnowledgeHub.Entities\KnowledgeHub.Entities.csproj", "{F8134F10-7117-439B-97DA-B370FD2BB14E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeHub.DataAccess", "KnowledgeHub.DataAccess\KnowledgeHub.DataAccess.csproj", "{E21C9C2D-F4D5-4199-9FB5-99D0DFA12AB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeHub.DataAccess", "KnowledgeHub.DataAccess\KnowledgeHub.DataAccess.csproj", "{E21C9C2D-F4D5-4199-9FB5-99D0DFA12AB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
