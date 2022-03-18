@@ -1,0 +1,9 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <form asp-action=@ViewBag.Action asp-controller=@ViewBag.Controller method="post">
+            Select Catagory to Search : 
+            @Html.DropDownList("CatagoryID")
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+</div>

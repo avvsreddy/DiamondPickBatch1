@@ -1,5 +1,6 @@
 ﻿using KnowledgeHub.DataAccess;
 using KnowledgeHub.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var catagories = db.Catagories.ToList();
@@ -61,23 +63,33 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 
             return RedirectToAction("Index");
         }
-
-        public IActionResult ApproveReject()
+        
+        public IActionResult ApproveReject(int catagoryid = 0)
         {
-            var unApprovedArticles = db.Articles.Include(a => a.Catagory).Where(a => !a.IsApproved).ToList();
+            List<Article> unApprovedArticles = null;
+            if (catagoryid == 0)
+            {
+                unApprovedArticles = db.Articles.Include(a => a.Catagory).Where(a => !a.IsApproved).ToList();
+            }
+            else
+            {
+                unApprovedArticles = db.Articles.Include(a => a.Catagory).Where(a => !a.IsApproved && a.CatagoryID == catagoryid).ToList();
+            }
             return View(unApprovedArticles);
         }
 
         public IActionResult Approve(List<int> articleid)
         {
-            var articlesToApprove = db.Articles.Where(a => !a.IsApproved).ToList();
+            //var articlesToApprove = db.Articles.Where(a => !a.IsApproved).ToList();
+            var articlesToApprove = db.Articles.Where(a => !a.IsApproved && articleid.Contains(a.ArticleID));
+
             foreach (var article in articlesToApprove)
             {
-                foreach (var aid in articleid)
-                {
-                    if (article.ArticleID == aid)
+                //foreach (var aid in articleid)
+                //{
+                //    if (article.ArticleID == aid)
                         article.IsApproved = true;
-                }
+                //}
             }
             db.SaveChanges();
 
@@ -90,14 +102,20 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 
         public IActionResult Reject(List<int> articleid)
         {
-           
-                foreach (var aid in articleid)
-                {
-                    var articleToReject = db.Articles.Find(aid);
-                    db.Articles.Remove(articleToReject);
-                }
-            
-                db.SaveChanges();
+            var articlesToReject = db.Articles.Where(a => !a.IsApproved && articleid.Contains(a.ArticleID));
+
+            //foreach (var aid in articleid)
+            //{
+            //    var articleToReject = db.Articles.Find(aid);
+            //    db.Articles.Remove(articleToReject);
+            //}
+
+            foreach (var article in articlesToReject)
+            {
+                db.Articles.Remove(article);
+            }
+
+            db.SaveChanges();
 
             return RedirectToAction("ApproveReject");
         }
