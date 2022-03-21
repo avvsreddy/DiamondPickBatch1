@@ -1,8 +1,10 @@
-﻿using KnowledgeHub.DataAccess;
+﻿using Humanizer;
+using KnowledgeHub.DataAccess;
 using KnowledgeHub.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -19,6 +21,8 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
         }
         public IActionResult Index(int catagoryid=0)
         {
+
+            //DateTime.Now.AddHours(-1).Humanize();
 
             var catagories = db.Catagories.ToList();
 
@@ -59,7 +63,9 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
             db.Articles.Add(article);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            TempData["msg"] = $"{article.Title} is created successfully";
+            return RedirectToAction("Create");
         }
 
         public IActionResult ApproveReject()

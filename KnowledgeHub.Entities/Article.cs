@@ -6,10 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace KnowledgeHub.Entities
 {
     public class Article
     {
+
+        
         public int ArticleID { get; set; }
         [Required]
         [MaxLength(100)]
@@ -29,7 +32,7 @@ namespace KnowledgeHub.Entities
         [Display(Name ="Owner")]
         public string SubmittedBy { get; set; }
         [Display(Name ="Date Submitted")]
-        public DateTime DateSubmitted { get; set; } = DateTime.Now.Date;
+        public DateTime DateSubmitted { get; set; } = DateTime.Now;
         public bool IsApproved { get; set; } = false;
 
     }
