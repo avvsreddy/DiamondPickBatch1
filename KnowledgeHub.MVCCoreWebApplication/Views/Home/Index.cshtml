@@ -3,7 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Knowledge Hub Portal</h1>
+   <h1 class="display-4">Welcome to Knowledge Hub Portal</h1>
+
+   <partial name="_TitlePartialView" />
+   @* @{
+        Html.RenderPartial("_TitlePartialView");
+    }*@
+      
+    <vc:articles-count is-approved=true></vc:articles-count>
+
+
     <p>
         Knowledge hub is a web portal where a user can submit her/his portal URL under a specific category to be shared on 
 knowledge hub. Admin can approve or reject the URL submitted by the user and in each case an email is sent out to the 

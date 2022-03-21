@@ -1,5 +1,6 @@
 ﻿using KnowledgeHub.DataAccess;
 using KnowledgeHub.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 {
 
     // CatagoriesController ctr = new CatagoriesController(new KnowldgeHubDbContext())
-
+    [Authorize(Roles = "admin")]
     public class CatagoriesController : Controller
     {
         private readonly KnowldgeHubDbContext db;
@@ -18,6 +19,8 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
         {
             this.db = db;
         }
+
+       [AllowAnonymous]
         public IActionResult Index()
         {
             // fetch all catagories and display

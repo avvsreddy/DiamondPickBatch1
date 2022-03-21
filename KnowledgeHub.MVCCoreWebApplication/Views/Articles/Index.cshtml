@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+ <partial name="_TitlePartialView" />
+ @* @{
+        Html.RenderPartial("_TitlePartialView");
+    }*@
+    <vc:articles-count></vc:articles-count>
 <h1>Browse Articles</h1>
 
 <div class="row">

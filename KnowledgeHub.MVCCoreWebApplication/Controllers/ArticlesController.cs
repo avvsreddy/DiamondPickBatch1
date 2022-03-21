@@ -1,6 +1,7 @@
 ﻿using Humanizer;
 using KnowledgeHub.DataAccess;
 using KnowledgeHub.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +44,7 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
             return View(approvedArticles);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -53,7 +55,7 @@ namespace KnowledgeHub.MVCCoreWebApplication.Controllers
 
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Create(Article article)
         {
