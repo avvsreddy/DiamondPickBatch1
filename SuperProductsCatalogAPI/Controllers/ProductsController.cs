@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNet.OData;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperProductsCatalogAPI.Data;
 using SuperProductsCatalogAPI.Entities;
@@ -9,6 +11,7 @@ namespace SuperProductsCatalogAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class ProductsController : ControllerBase
     {
         ProductsDbContext db = null;
@@ -17,7 +20,7 @@ namespace SuperProductsCatalogAPI.Controllers
             this.db = db;
         }
         [HttpGet]
-
+        [EnableQuery]
         //GET domainname.com/api/products
         public List<Product> GetProducts()
         {
