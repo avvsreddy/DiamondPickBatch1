@@ -19,9 +19,9 @@ using Microsoft.AspNet.OData.Extensions;
 
 namespace SuperProductsCatalogAPI
 {
-    public class Startup
+    public class Startup1
     {
-        public Startup(IConfiguration configuration)
+        public Startup1(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -36,9 +36,22 @@ namespace SuperProductsCatalogAPI
             {
                 op.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-
-            services.AddControllers().AddNewtonsoftJson().AddXmlSerializerFormatters();
-            
+            services.AddControllers().AddNewtonsoftJson();//.AddOData();
+            services.AddOData();
+            services.AddCors(options => 
+            {
+                options.AddPolicy(name: "MyPolicy",
+                builder =>
+                {
+                    builder.WithOrigins("http://example.com",
+                        "http://www.contoso.com",
+                        "https://cors1.azurewebsites.net",
+                        "https://cors3.azurewebsites.net",
+                        "https://localhost:44398",
+                        "https://localhost:5001")
+                            .WithMethods("PUT", "DELETE", "GET");
+                });
+            });
 
            
 
@@ -47,7 +60,7 @@ namespace SuperProductsCatalogAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SuperProductsCatalogAPI", Version = "v1" });
             });
 
-            
+            services.AddMvc().AddXmlSerializerFormatters();
             
         }
 
@@ -65,14 +78,16 @@ namespace SuperProductsCatalogAPI
 
             app.UseRouting();
 
-           
+            //app.UseCors();
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                
+                endpoints.EnableDependencyInjection();
+                endpoints.Select().OrderBy().Filter().MaxTop(10).Count().SkipToken();
             });
         }
     }
