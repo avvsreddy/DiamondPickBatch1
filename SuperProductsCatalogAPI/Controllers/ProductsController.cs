@@ -118,5 +118,31 @@ namespace SuperProductsCatalogAPI.Controllers
             // return [201 status code + location of the resource + resource]
             return CreatedAtAction("GetProduct", new { id = product.ProductID }, product);
         }
+        // edit a resource
+        // api/products/id
+        [HttpPut("{id}")]
+        public ActionResult EditProduct([FromRoute] int id, [FromBody]Product product)
+        {
+            if (id != product.ProductID)
+                return BadRequest();
+
+            var productToEdit = db.Products.Find(id);
+            if (productToEdit == null)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            //db.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            productToEdit.Name = product.Name;
+            productToEdit.Brand = product.Brand;
+            productToEdit.Price = product.Price;
+            productToEdit.IsInStock = product.IsInStock;
+
+            //use AutoMapper 
+            db.SaveChanges();
+            return NoContent();
+        }
     }
 }
