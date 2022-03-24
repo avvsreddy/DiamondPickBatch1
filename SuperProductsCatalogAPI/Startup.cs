@@ -44,7 +44,7 @@ namespace SuperProductsCatalogAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SuperProductsCatalogAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Super Products Catalog API", Version = "v1" });
             });
 
             

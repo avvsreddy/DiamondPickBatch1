@@ -91,5 +91,32 @@ namespace SuperProductsCatalogAPI.Controllers
                 return NotFound();
             return Ok(products);
         }
+
+
+        // DELETE /api/products/1
+       [HttpDelete("{id}")]
+        public ActionResult DeleteProduct(int id)
+        {
+            var productToDelete = db.Products.Find(id);
+            if (productToDelete == null)
+                return NotFound();
+            db.Products.Remove(productToDelete);
+            db.SaveChanges();
+            return NoContent();
+        }
+        // add new resource
+        // api/products
+        [HttpPost]
+        public ActionResult PostProduct(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            db.Products.Add(product);
+            db.SaveChanges();
+            // return [201 status code + location of the resource + resource]
+            return CreatedAtAction("GetProduct", new { id = product.ProductID }, product);
+        }
     }
 }
