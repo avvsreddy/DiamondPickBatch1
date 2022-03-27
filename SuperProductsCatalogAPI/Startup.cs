@@ -28,18 +28,28 @@ namespace SuperProductsCatalogAPI
 
         public IConfiguration Configuration { get; }
 
+        string policy = "mypolicy";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //ProductsDbContext db = new ProductsDbContext();
+           
+            services.AddCors(ops => 
+            {
+                ops.AddPolicy(name: policy, builder => 
+                {
+                    builder.WithOrigins("www.abc.com", "www.xyz.com");
+                });
+            });
+
             services.AddDbContext<ProductsDbContext>(op =>
             {
                 op.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddControllers().AddNewtonsoftJson().AddXmlSerializerFormatters();
-            
 
+            services.AddOData();
            
 
             services.AddSwaggerGen(c =>
@@ -65,13 +75,18 @@ namespace SuperProductsCatalogAPI
 
             app.UseRouting();
 
-           
+            //app.UseCors(policy);
+            app.UseCors();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.EnableDependencyInjection();
+                endpoints.Select().Filter().OrderBy().MaxTop(10).SkipToken().Expand();
                 endpoints.MapControllers();
+                //Microsoft.AspNetCore.Routing.IEndpointRouteBuilder endpointRouteBuilder = endpoints.RequireCors(policy);
+                
                 
             });
         }
